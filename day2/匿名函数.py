@@ -1,6 +1,7 @@
 # 简化函数定义
 
 # 格式  lambda  参数A， 参数B ： 运算
+from functools import reduce
 
 s = lambda a, b: a + b
 
@@ -33,6 +34,16 @@ result = map(lambda x: x + 2, list2)
 
 print(list(result))
 
-result = map(lambda x: x if x == 2 else x + 2,list2)
+result = map(lambda x: x if x == 2 else x + 2, list2)
 
+print(list(result))
+
+result = reduce(lambda x, y: x + y, list2, 20)
+print(result)
+
+result = filter(lambda i: i % 2 == 0, list2)
+
+print(list(result))
+
+result = sorted(list1, key=lambda x: x["a"])
 print(list(result))
