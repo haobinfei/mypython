@@ -44,20 +44,61 @@
 # print(next(g))
 
 #菲波那切数列
-def fib(length):
-    a,b = 0,1
-    n =0
+# def fib(length):
+#     a,b = 0,1
+#     n =0
+#
+#     while n < length:
+#         print(b)
+#         yield b
+#         a, b = b,a+b
+#         n+=1
+# g = fib(10)
+# print(next(g))
+# print(next(g))
+# print(next(g))
+# print(next(g))
+# print(next(g))
+# print(next(g))
+# print(next(g))
 
-    while n < length:
-        print(b)
-        yield b
-        a, b = b,a+b
-        n+=1
-g = fib(10)
-print(next(g))
-print(next(g))
-print(next(g))
-print(next(g))
-print(next(g))
-print(next(g))
-print(next(g))
+"""
+生成器方法
+    next
+    send
+"""
+
+def func1(a):
+    for i in range(0,a):
+        yield i
+        print("正在搬第{}块砖".format(i))
+    return "没有砖了"
+def func2(a):
+    for i in range(0,a):
+        yield i
+        print("正在听第{}首歌".format(i))
+    return "没有歌了"
+g1 = func1(5)
+g2 = func2(5)
+
+
+while True:
+    try:
+        next(g1)
+        next(g2)
+    except StopIteration as err:
+        print(err)
+        break
+
+"""
+迭代器
+    生成器是可迭代的，是迭代器
+    列表也是可迭代的，不是迭代器 通过iter()函数将可迭代的变成迭代器
+"""
+list1 = [1,2,3,4,5,6]
+
+list1 = iter(list1)
+
+print(next(list1))
+
+
